@@ -6,17 +6,16 @@ $(document).ready(function() {
 			switch (value) {
 				case 11:
 				return 'Jack';
-				break;
 				case 12:
 				return 'Queen';
-				break;
 				case 13:
 				return 'King';
-				break;
+				case 14:
+				return 'Ace';
 			}
 		}
 		return value.toString();
-	}
+	};
 
 	//what does this do?
 	var deck = [];
@@ -42,13 +41,14 @@ $(document).ready(function() {
 		 	} 
 		} 
 		return copy; 
-	}
+	};
 	
 	//Now call the shuffle function and save the result of what shuffle returns into your deck variable
 	deck = shuffle(deck);
 	var cards_player_1 = [];
 	var cards_player_2 = [];
 	// write a function called deal that will evently divide the deck up between the two players
+<<<<<<< HEAD
 	var deal = function(array) {
 		for(var i = 0; i < 26; i++){
 			cards_player_1.push(array.shift()); 
@@ -80,7 +80,7 @@ $(document).ready(function() {
 			$("#my-card-count").html(cards_player_2.length);
 			
 		}
-	}
+	};
 	
 	
 	//create a play function
@@ -88,6 +88,7 @@ $(document).ready(function() {
 		//give the winner both cards (at end of deck)
 	var play = function(){
 		
+<<<<<<< HEAD
 		var card_1 = cards_player_1.shift();
 		var card_2 = cards_player_2.shift();
 		var winner = war(card_1, card_2);
@@ -99,9 +100,8 @@ $(document).ready(function() {
 			cards_player_1.push(card_1);
 			cards_player_2.push(card_2);
 		}
-
 		advance();
-	}
+	};
 	
 
 	advance();
