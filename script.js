@@ -33,7 +33,8 @@ $(document).ready(function() {
 		var copy = [];
 		var n = array.length; 
 		var i; 
-		while (n) { i = Math.floor(Math.random() * array.length);  
+		while (n) { 
+			i = Math.floor(Math.random() * array.length);  
 			if (i in array) { 
 		 		copy.push(array[i]); 
 		 		delete array[i]; 
@@ -44,15 +45,27 @@ $(document).ready(function() {
 	}
 	
 	//Now call the shuffle function and save the result of what shuffle returns into your deck variable
-	
+	deck = shuffle(deck);
 	var cards_player_1 = [];
 	var cards_player_2 = [];
 	// write a function called deal that will evently divide the deck up between the two players
-	
-	
+	var deal = function(array) {
+		for(var i = 0; i < 26; i++){
+			cards_player_1.push(array.shift()); 
+			cards_player_2.push(array.shift());
+		}
+	}
+	deal(deck);
 	//create a function (algorithm) called "war" that takes two cards as parameters, compares them and returns a winner. A tie should return false.
-	var war = function(){
-	
+	var war = function(card_1, card_2){
+		if(card_1.number > card_2.number){
+			return "card_1";
+		}
+		if(card_2.number > card_1.number){
+			return "card_2";
+		}
+
+		return false;
 		
 	}
 	
@@ -75,7 +88,18 @@ $(document).ready(function() {
 		//give the winner both cards (at end of deck)
 	var play = function(){
 		
-		//this function (defined below) will continue to the next turn
+		var card_1 = cards_player_1.shift();
+		var card_2 = cards_player_2.shift();
+		var winner = war(card_1, card_2);
+		if(winner === 'card_1') {
+			cards_player_1.push(card_1, card_2);
+		} else if (winner === 'card_2'){
+			cards_player_2.push(card_1, card_2);
+		} else {
+			cards_player_1.push(card_1);
+			cards_player_2.push(card_2);
+		}
+
 		advance();
 	}
 	
